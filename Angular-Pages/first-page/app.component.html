@@ -1,0 +1,140 @@
+<header>
+  <div class="container">
+    <a routerLink="/" class="heading">COURIERit</a>
+    <nav>
+      <ul>
+        <div class="dropdown">
+        <!-- <li><button class="dropbtn">Login/Registration</button> -->
+        <li><a href="#">Login/Registration</a> 
+         
+          <div class="dropdown-content">
+            <a href="#" routerLink="/userlogin">User Login</a>
+            <a href="#" routerLink="/adminlogin">Admin Login</a>
+            <a href="#" roterLink="/brmanlogin">Br.Manager Login</a>
+          </div>
+        
+        </li>
+      </div>
+        <li><a href="#" routerLink="/contactus">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+
+<!-- <div class="dropdown">
+  <button class="dropbtn">Login\Registration</button>
+  <div class="dropdown-content">
+    <a href="#">User Login</a>
+    <a href="#">Admin Login</a>
+    <a href="#">Br.Manager Login</a>
+  </div>
+</div> -->
+
+
+
+
+<div class="track" >
+   <input type="search" class="search" placeholder="Enter Tracking Id"/>
+     <button type="submit" class="buton">
+     </button>
+</div>
+
+ 
+<div class="row" style="overflow-x: hidden;">  
+  <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">  
+    <div ngxSlickItem *ngFor="let image of images" class="slide">  
+      <img class="image" src="{{ image.img }}" width="100%">  
+    </div>  
+  </ngx-slick-carousel>  
+</div>
+<div>
+  <br/>
+</div>
+
+<div class="desc">
+  <h1 style="text-align: center; font-family: Arial, Helvetica, sans-serif;">COURIERit - Your Own Courier Friend</h1>
+  <p style="font-size: 20px;">COURIERit offers commercial and residential on-demand courier services all over Pune City. 
+    Our on-demand services are fast and reliable. Whether you require the delivery of documents, 
+    packages, online shopping, flowers, gifts, heavy goods of up to 200Kg or even emergency deliveries, 
+    COURIERit can provide it all. Our services are responsive, confidential, friendly and affordable.</p> 
+  <p style="font-size: 20px;"> We have been providing courier services in Pune for several years, which has enhanced our experience 
+    and given us a wealth of knowledge about the city. Throughout the years, we have set a strong track 
+    record with happy and satisfied customers. Our testimonials and reviews speak for themselves as we are 
+    ranked highly amongst all the courier service companies in Pune.</p>
+  <h2>How Does Our Courier Service Work? </h2>
+  <p style="font-size: 20px;">Our express delivery system is designed to be as efficient as possible and is geared towards customer satisfaction.</p>
+  <p style="font-size: 20px;">You can book a trusted courier by simply completing our online order form with details such as phone numbers, addresses, 
+    time and weight of delivery, and so on. Choose between the more affordable walking couriers or faster motorcycle deliveries. 
+    The form takes about one to two minutes to complete, after which you get your quote and order number.</p>  
+  <p style="font-size: 20px;">After payment, the selected rider or courier will contact you to get more information about your parcel. 
+    If you are ordering our delivery services for a business, you can opt for cash on delivery (COD) which is more efficient.</p>
+  <p style="font-size: 20px;">The couriers collect your parcel as soon as possible and deliver it to your preferred destination in as little as 90 minutes. 
+    On delivery, the courier will require your signature on his smartphone screen to verify that all is in order.</p>
+  <p style="font-size: 20px;">Our operators are on call 24/7 in case of any questions or complaints you may have. Our system assigns the courier nearest to you 
+    with the highest ratings. It is therefore important to rate them so that we can assign the best couriers to other customers.</p>
+  </div>
+  <!-- <span style="text-align:center; border:1px solid black;"> -->
+
+<section class="layout__content-section"> 
+<div class="layout__content-wrapper layout__content-wrapper--padding">
+<div class="layout__content-header"> Why choose us? </div> 
+<div class="dv-small-card-list"> 
+<ul class="dv-small-card-list__items"> 
+<li class="dv-small-card-list__item"> 
+  <div class="dv-small-card-list__image"> 
+    <div class="dv-icon dv-icon--rocket"></div> 
+  </div> 
+  <div class="dv-small-card-list__text">Walking couriers and riders are always available. We assign the nearest courier with the highest rating within 7 minutes.</div> 
+</li> 
+<li class="dv-small-card-list__item"> 
+   <div class="dv-small-card-list__image"> 
+     <div class="dv-icon dv-icon--calc"></div> 
+     </div> 
+     <div class="dv-small-card-list__text">The system assigns high-scored and closest courier. Probably we provide you with fastest delivery service ever.</div> 
+</li> 
+<li class="dv-small-card-list__item"> 
+  <div class="dv-small-card-list__image"> 
+    <div class="dv-icon dv-icon--rate"></div> 
+  </div> 
+  <div class="dv-small-card-list__text">The system assigns high-scored and closest courier. Probably we provide you with fastest delivery service ever.</div> 
+</li> 
+<li class="dv-small-card-list__item"> 
+  <div class="dv-small-card-list__image"> 
+    <div class="dv-icon dv-icon--wizard"></div> 
+  </div> 
+  <div class="dv-small-card-list__text">If you own a business you can opt for COD with us. Its cheap and effective. No reason to wait weeks for getting your revenue back.</div> 
+</li> 
+<li class="dv-small-card-list__item"> 
+  <div class="dv-small-card-list__image"> 
+    <div class="dv-icon dv-icon--sms"></div> 
+  </div> 
+  <div class="dv-small-card-list__text">You can book a courier delivery without creating accounts or signing contracts. The phone number for the sender and receiver is more than enough!</div> 
+</li> 
+<li class="dv-small-card-list__item"> 
+  <div class="dv-small-card-list__image"> 
+    <div class="dv-icon dv-icon--card"></div> 
+  </div> 
+<div class="dv-small-card-list__text">We send courier's phone number to the contact person via SMS at each delivery point.</div> 
+</li> 
+</ul> 
+</div> 
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
