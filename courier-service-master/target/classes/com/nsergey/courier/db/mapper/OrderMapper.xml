@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nsergey.courier.db.mapper.OrderMapper">
+
+    <resultMap id="orderResultMap" type="com.nsergey.courier.db.model.Order">
+        <result property="id" column="id"/>
+        <result property="addressId" column="address_id"/>
+        <result property="customerId" column="customer_id"/>
+        <result property="customerName" column="customer_name"/>
+        <result property="deliveryTime" column="delivery_time"/>
+        <result property="courierId" column="courier_id"/>
+        <result property="state" column="state_id"/>
+    </resultMap>
+
+    <sql id="selectJoin">
+        SELECT o.id,
+               o.address_id,
+               a.city_name || ', ' || a.street_name || ', ' || a.house || ', ' || a.flat AS address,
+               o.customer_id,
+               customers.name AS customer_name,
+               o.delivery_time,
+               o.courier_id,
+               o.state_id
+        FROM orders o
+                 JOIN order_status os ON o.state_id = os.id
+                 JOIN addresses a ON o.address_id = a.id
+                 JOIN customers ON o.customer_id = customers.id
+                 JOIN couriers c2 ON o.courier_id = c2.id
+    </sql>
+
+    <select id="findAll" resultType="com.nsergey.courier.db.model.Order" resultMap="orderResultMap">
+        <include refid="selectJoin"/>
+    </select>
+
+    <select id="findById" resultType="com.nsergey.courier.db.model.Order" resultMap="orderResultMap">
+        <include refid="selectJoin"/>
+        WHERE o.id = #{orderId}
+    </select>
+
+    <select id="findAllByCourierId" resultType="com.nsergey.courier.db.model.Order" resultMap="orderResultMap">
+        <include refid="selectJoin"/>
+        WHERE o.courier_id = #{courierId}
+    </select>
+
+    <select id="findAllByCustomerId" resultType="com.nsergey.courier.db.model.Order" resultMap="orderResultMap">
+        <include refid="selectJoin"/>
+        WHERE o.customer_id = #{customerId}
+    </select>
+
+    <select id="findAllByCourierIdAndStatus" resultType="com.nsergey.courier.db.model.Order" resultMap="orderResultMap">
+        <include refid="selectJoin"/>
+        WHERE o.courier_id = #{courierId}
+        <if test="orderStatuses != null">
+            AND o.state_id in
+            <foreach item="item" index="index" collection="orderStatuses" open="(" separator="," close=")">#{item}</foreach>
+        </if>
+    </select>
+
+    <update id="updateState" parameterType="com.nsergey.courier.db.model.Order">
+        UPDATE orders SET
+            state_id = #{status}
+        WHERE id = #{orderId}
+    </update>
+
+    <update id="updateDeliveryTime">
+        UPDATE orders SET
+            delivery_time = #{newDeliveryTime},
+            state_id = #{newOrderStatus}
+        WHERE id = #{orderId}
+    </update>
+
+</mapper>

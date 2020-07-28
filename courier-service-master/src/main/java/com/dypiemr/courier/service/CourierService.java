@@ -1,0 +1,25 @@
+package com.dypiemr.courier.service;
+
+import com.dypiemr.courier.db.mapper.CourierMapper;
+import com.dypiemr.courier.db.model.Courier;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Slf4j
+@Service
+public class CourierService {
+
+    private final CourierMapper courierMapper;
+
+    @Autowired
+    public CourierService(CourierMapper courierMapper) {
+        this.courierMapper = courierMapper;
+    }
+
+    public Courier findById(long courierId) {
+        log.info("Find a courier by id: {}", courierId);
+        return courierMapper.findById(courierId);
+    }
+}

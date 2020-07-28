@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nsergey.courier.db.mapper.CallCenterTaskMapper">
+
+    <resultMap id="taskResultMap" type="com.nsergey.courier.db.model.Task">
+        <id column="id" property="id"/>
+        <result property="orderId" column="order_id"/>
+        <result property="created" column="created"/>
+        <result property="done" column="done"/>
+    </resultMap>
+
+    <select id="addOrderRescheduleTask" resultType="long">
+        INSERT INTO call_center_tasks (order_id)
+        VALUES (#{orderId})
+        RETURNING id
+    </select>
+
+    <select id="findAllUndone" resultMap="taskResultMap">
+        SELECT
+            id,
+            order_id,
+            done,
+            created
+        FROM call_center_tasks
+        WHERE done=false
+    </select>
+
+    <select id="findTaskById" resultMap="taskResultMap">
+        SELECT
+            id,
+            order_id,
+            done,
+            created
+        FROM call_center_tasks
+        WHERE id=#{taskId}
+    </select>
+
+    <update id="closeTask">
+        UPDATE call_center_tasks SET
+            done = true
+        WHERE id = #{taskId}
+    </update>
+
+</mapper>
